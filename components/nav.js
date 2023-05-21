@@ -18,18 +18,20 @@ const Nav = () => {
   }, [])
 
   return (
-    <nav>
+    <nav className="flex justify-between w-full mb-16 pt-3">
       {/* logo */}
       <Link href="/">
-        <h3>Tasky</h3>
+        <h3 className="text-2xl font-bold">Tasky</h3>
       </Link>
 
       {/* desktop navigation */}
-      <div>
+      <div className="sm:flex hidden">
         {session?.user ? (
-          <div>
-            <Link href="/create-task">Create Task</Link>
-            <button type="button" onClick={signOut}>
+          <div className="flex gap-3 md:gap-5">
+            <Link href="/create-task" className="black_btn">
+              Create Task
+            </Link>
+            <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
             </button>
             <Link href="/profile">
@@ -38,6 +40,7 @@ const Nav = () => {
                 alt="profile picture"
                 height={32}
                 width={32}
+                className="rounded-full"
               />
             </Link>
           </div>
@@ -51,6 +54,7 @@ const Nav = () => {
                   onClick={() => {
                     signIn(provider.id)
                   }}
+                  className="black_btn"
                 >
                   Sign In
                 </button>
