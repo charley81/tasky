@@ -31,7 +31,13 @@ const Nav = () => {
             <Link href="/create-task" className="black_btn">
               Create Task
             </Link>
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button
+              type="button"
+              onClick={() => {
+                signOut
+              }}
+              className="outline_btn"
+            >
               Sign Out
             </button>
             <Link href="/profile">
@@ -64,6 +70,68 @@ const Nav = () => {
       </div>
 
       {/* mobile navigation */}
+      <div className="sm:hidden flex relative">
+        {session?.user ? (
+          <div className="flex">
+            <Link href="/profile">
+              <Image
+                src={session?.user.image}
+                alt="profile picture"
+                height={32}
+                width={32}
+                className="rounded-full"
+                onClick={() => setToggleDropdown(!toggleDropdown)}
+              />
+            </Link>
+
+            {/* dropdown */}
+            {toggleDropdown && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  My Profile
+                </Link>
+                <Link
+                  href="/create-task"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  Create Task
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setToggleDropdown(false)
+                    signOut()
+                  }}
+                  className="mt-5 black_btn w-full"
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div>
+            {providers &&
+              Object.values(providers).map(provider => (
+                <button
+                  key={provider.name}
+                  type="button"
+                  onClick={() => {
+                    signIn(provider.id)
+                  }}
+                  className="black_btn"
+                >
+                  Sign In
+                </button>
+              ))}
+          </div>
+        )}
+      </div>
     </nav>
   )
 }
