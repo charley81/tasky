@@ -24,7 +24,7 @@ const Form = ({ type, taskObj, submitting, handleSubmit, setTask }) => {
           Enter Tags
           <input
             type="text"
-            value={taskObj.task}
+            value={taskObj.tag}
             onChange={e => setTask({ ...taskObj, tag: e.target.value })}
             placeholder="#homework #yard #job"
             required
