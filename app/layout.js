@@ -15,6 +15,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
         <Provider>
+          <div className="main">
+            <div className="gradient" />
+          </div>
+
           <main className="app">
             <Nav />
             {children}
