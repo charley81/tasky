@@ -13,7 +13,7 @@ const CreateTaskPage = () => {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/prompt/new', {
+      const response = await fetch('/api/posts/new', {
         method: 'POST',
         body: JSON.stringify({
           task: taskObj.task,
