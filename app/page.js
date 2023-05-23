@@ -1,3 +1,12 @@
+import List from '@/components/list'
+
+/* eslint-disable react/no-unescaped-entities */
 export default function Home() {
-  return <main className="">{/* <h1>Tasky</h1> */}</main>
+  // TODO import session and use name here
+  return (
+    <main className="">
+      <h1>Chris's Tasks</h1>
+      <List />
+    </main>
+  )
 }
